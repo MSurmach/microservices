@@ -1,0 +1,23 @@
+services:
+  postgres-customer:
+    container_name: postgres-customer
+    image: stellirin/postgres-windows
+    environment:
+      POSTGRES_USER: msurmach
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: customers
+    ports:
+      - "5433:5432"
+
+  postgres-fraud:
+    container_name: postgres-fraud
+    image: stellirin/postgres-windows
+    environment:
+      POSTGRES_USER: msurmach
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: frauds
+    ports:
+      - "5434:5432"
+
+
+
