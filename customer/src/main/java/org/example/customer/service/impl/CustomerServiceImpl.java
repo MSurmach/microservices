@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @AllArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
 
     @Override
     public Customer register(CustomerRegistrationRequest request) {
@@ -24,7 +24,7 @@ public class CustomerServiceImpl implements CustomerService {
                 build();
         customerRepository.saveAndFlush(customer);
         FraudResponse response = restTemplate.getForObject(
-                "http://localhost:8081/api/v1/frauds/{customerID}",
+                "http://FRAUD/api/v1/fraudsters/{customerID}",
                 FraudResponse.class,
                 customer.getId()
         );

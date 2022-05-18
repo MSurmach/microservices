@@ -20,7 +20,7 @@ public class FraudServiceImpl implements FraudService {
     public boolean isFradulentCustomer(Integer customerId) {
         fraudRepository.save(Fraud.builder().
                 isFraudster(false).
-                id(customerId).
+                customerId(customerId).
                 createdAt(LocalDateTime.now()).
                 build());
         return false;

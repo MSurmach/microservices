@@ -1,3 +1,4 @@
+version: "3.8"
 services:
   postgres-customer:
     container_name: postgres-customer
@@ -8,6 +9,8 @@ services:
       POSTGRES_DB: customers
     ports:
       - "5433:5432"
+    networks:
+      - backend
 
   postgres-fraud:
     container_name: postgres-fraud
@@ -18,6 +21,10 @@ services:
       POSTGRES_DB: frauds
     ports:
       - "5434:5432"
-
+    networks:
+      - backend
+networks:
+  backend:
+    driver: nat
 
 
